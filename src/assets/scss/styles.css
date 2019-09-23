@@ -1,0 +1,42 @@
+@font-face : "Caviar Dreams" {
+  font-family: "Caviar Dreams";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams.ttf") format("truetype"); }
+@font-face : "Caviar Dreams Bold" {
+  font-family: "Caviar Dreams Bold";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Bold.ttf") format("truetype"); }
+@font-face : "Caviar Dreams Bold" {
+  font-family: "Caviar Dreams Bold";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Italic.ttf") format("truetype"); }
+@font-face : "Caviar Dreams Bold Italic" {
+  font-family: "Caviar Dreams Bold Italic";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype"); }
+@font-face : "Caviar Dreams" {
+  font-family: "Caviar Dreams";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams.ttf") format("truetype"); }
+@font-face : "Caviar Dreams Bold" {
+  font-family: "Caviar Dreams Bold";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Bold.ttf") format("truetype"); }
+@font-face : "Caviar Dreams Bold" {
+  font-family: "Caviar Dreams Bold";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Italic.ttf") format("truetype"); }
+@font-face : "Caviar Dreams Bold Italic" {
+  font-family: "Caviar Dreams Bold Italic";
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype"); }
+.car {
+  margin: 50px auto;
+  width: 240px;
+  height: 150px;
+  background: transparent url("../img/player.png") center/cover no-repeat;
+  transform: rotate(90deg); }
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Caviar Dreams", Helvetica, Arial, sans-serif;
+  background-color: azure; }
+
+.hidden {
+  display: none; }
+
+/*# sourceMappingURL=styles.css.map */
