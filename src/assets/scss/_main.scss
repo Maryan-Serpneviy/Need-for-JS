@@ -1,0 +1,17 @@
+@import "utils/variables";
+@import "utils/mixins";
+@import "utils/fonts";
+
+@import "modules/player";
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: $main-font;
+    background-color: azure;
+}
+
+.hidden {
+    display: none;
+}
