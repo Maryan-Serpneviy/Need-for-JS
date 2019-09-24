@@ -1,9 +1,10 @@
-$car-base: 2;
+$car-base: 1;
 
-.car {
-    margin: 50px auto;
-    width: 120px * $car-base;
-    height: 75px * $car-base;
-    background: transparent url('../../img/player.png') center / cover no-repeat;
+.car, .opponent {
     transform: rotate(90deg);
+    width: 165px * $car-base;
+    height: 90px * $car-base;
+    position: absolute;
+    left: 67px;
+    bottom: 50px;
 }

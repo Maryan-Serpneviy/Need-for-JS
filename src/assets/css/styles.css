@@ -22,39 +22,21 @@
 @font-face : "Caviar Dreams Bold Italic" {
   font-family: "Caviar Dreams Bold Italic";
   src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype"); }
-.car, .opponent {
-  transform: rotate(90deg);
-  width: 165px;
-  height: 90px;
-  position: absolute;
-  left: 67px;
-  bottom: 50px; }
+.car {
+  margin: 50px auto;
+  width: 240px;
+  height: 150px;
+  background: transparent url("../img/player.png") center/cover no-repeat;
+  transform: rotate(90deg); }
 
 body {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
   font-family: "Caviar Dreams", Helvetica, Arial, sans-serif;
   background-color: azure; }
 
 .hidden {
   display: none; }
-
-.car, .opponent {
-  background: transparent url("../img/player.png") center/cover no-repeat; }
-
-.gameArea {
-  width: 300px;
-  height: 100vh;
-  position: relative;
-  margin: auto;
-  background-color: #505050;
-  overflow: hidden; }
-
-.road-line {
-  position: absolute;
-  width: 10px;
-  height: 50px;
-  background: #fff;
-  left: 145px; }
 
 /*# sourceMappingURL=styles.css.map */
