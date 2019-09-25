@@ -155,7 +155,6 @@ const startGame = () => {
     player.style.left = gameArea.offsetWidth / 2 - player.offsetWidth / 2;
     player.style.top = 'auto';
     player.style.bottom = '10px';
-    
     Setting.x = player.offsetLeft;
     Setting.y = player.offsetTop;
 
