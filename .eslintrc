@@ -20,7 +20,7 @@
 		"import/no-unassigned-import": "off",
 		"jsx-quotes": ["off", "prefer-double"],
 		"key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
-		"max-len": ["error", 100, 2, {
+		"max-len": ["error", 150, 2, {
 			"ignoreUrls": true,
 			"ignoreComments": false,
 			"ignoreRegExpLiterals": true,

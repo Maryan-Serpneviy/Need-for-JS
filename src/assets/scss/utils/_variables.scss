@@ -1,47 +1,5 @@
-// Player
-$road-width: 300px;
-
-// Font
-$main-font: 'Caviar Dreams', Helvetica, Arial, sans-serif;
-$bold-font: 'Caviar Dreams Bold', Helvetica, Arial, sans-serif;
-$italic-font: 'Caviar Dreams Italic', Helvetica, Arial, sans-serif;
-$bold-italic-font: 'Caviar Dreams Bold Italic', Helvetica, Arial, sans-serif;
-$lucida: 'Lucida Sans Unicode', Helvetica, Arial, sans-serif;
-
-// Size
-$main-font-color: #101010;
-$main-font-size: 18px;
-$main-font-weight: 400;
-$main-line-height: 1.4;
-
-// Responsive
-$desktop-width: 1280px;
-$sm-desktop-width: 980px;
-$tablet-width: 768px;
-$phone-width: 480px;
-$sm-phone-width: 320px;
-
-// Main color
-$default-color: #ffffff;
-$primary-color: #444ce0;
-$success-color: #26de81;
-$danger-color: #fc5c65;
-$warning-color: #fed330;
-$light-color: #999999;
-$purple-color: #8854d0;
-
-// Neutral Color
-$neutral-primary: #303133;
-$neutral-regular: #606266;
-$neutral-secondary: #909399;
-$neutral-placeholder: #C0C4CC;
-
-// Border Color
-$border-base: #DCDFE6;
-$border-light: #E4E7ED;
-$border-lighter: #EBEEF5;
-$border-lightex: #F2F6FC;
-
-// Current
-$main-color: #005dad;
-$bg-color: #edf8fe;
+$asphalt-color: rgb(80, 80, 80);
+$road-width: 450px;
+$road-line-width: 10px;
+$road-line-length: 50px;
+$road-line-color: #eee;

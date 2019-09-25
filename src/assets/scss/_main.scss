@@ -1,13 +1,7 @@
-@import "utils/variables";
-@import "utils/mixins";
-@import "utils/fonts";
-
-@import "modules/player";
-
 body {
     padding: 0;
     margin: 0;
-    //box-sizing: border-box;
+    box-sizing: border-box;
     font-family: $main-font;
     background-color: azure;
 }
@@ -16,24 +10,33 @@ body {
     display: none;
 }
 
-.car, .opponent {
-    background: transparent url('../img/player.png') center / cover no-repeat;
-}
-
 .gameArea {
     width: $road-width;
     height: 100vh;
     position: relative;
     margin: auto;
-    background-color: rgb(80, 80, 80);
+    background-color: $asphalt-color;
     overflow: hidden;
 }
 
 .road-line {
     position: absolute;
-    width: 10px;
-    height: 50px;
-    background: #fff;
-    left: 145px;
+    width: $road-line-width;
+    height: $road-line-length;
+    background: $road-line-color;
+    left: $road-width / 2 - ($road-line-width / 2);
+}
+
+.car {
+    position: absolute;
+    width: 75px;
+    height: 150px;
+}
+
+.player {   
+    width: 90px;
+    height: 150px;
+    bottom: 25px;
+    left: $road-width / 2 - 90 / 2;
 }
 
