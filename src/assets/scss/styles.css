@@ -10,25 +10,6 @@
 @font-face : "Caviar Dreams Bold Italic" {
   font-family: "Caviar Dreams Bold Italic";
   src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype"); }
-@font-face : "Caviar Dreams" {
-  font-family: "Caviar Dreams";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams.ttf") format("truetype"); }
-@font-face : "Caviar Dreams Bold" {
-  font-family: "Caviar Dreams Bold";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Bold.ttf") format("truetype"); }
-@font-face : "Caviar Dreams Bold" {
-  font-family: "Caviar Dreams Bold";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Italic.ttf") format("truetype"); }
-@font-face : "Caviar Dreams Bold Italic" {
-  font-family: "Caviar Dreams Bold Italic";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype"); }
-.car {
-  margin: 50px auto;
-  width: 240px;
-  height: 150px;
-  background: transparent url("../img/player.png") center/cover no-repeat;
-  transform: rotate(90deg); }
-
 body {
   padding: 0;
   margin: 0;
@@ -38,5 +19,31 @@ body {
 
 .hidden {
   display: none; }
+
+.gameArea {
+  width: 450px;
+  height: 100vh;
+  position: relative;
+  margin: auto;
+  background-color: #505050;
+  overflow: hidden; }
+
+.road-line {
+  position: absolute;
+  width: 10px;
+  height: 50px;
+  background: #eee;
+  left: 220px; }
+
+.car {
+  position: absolute;
+  width: 75px;
+  height: 150px; }
+
+.player {
+  width: 90px;
+  height: 150px;
+  bottom: 25px;
+  left: 180px; }
 
 /*# sourceMappingURL=styles.css.map */
