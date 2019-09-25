@@ -67,6 +67,18 @@ const moveRoad = () => {
 const moveOpponent = () => {
     const opponents = document.querySelectorAll('.opponent');
     opponents.forEach(opponent => {
+        const playerRect = player.getBoundingClientRect();
+        const opponentRect = opponent.getBoundingClientRect();
+
+        if (playerRect.top <= opponentRect.bottom &&
+            playerRect.right >= opponentRect.left &&
+            playerRect.left <= opponentRect.right &&
+            playerRect.bottom >= opponentRect.top) {
+                Setting.start = false;
+                start.classList.remove('hidden');
+                start.style.top = score.offsetHeight;
+        }
+
         opponent.y += Setting.speed / OPPONENT_SPEED;
         opponent.style.top = `${opponent.y}px`;
         if (opponent.y >= gameArea.offsetHeight) {
@@ -82,6 +94,8 @@ const randomOpponent = () => {
 
 const playGame = () => {
     if (Setting.start) {
+        Setting.score += Setting.speed;
+        score.innerHTML = 'Score<br>' + Setting.score;
         moveRoad();
         moveOpponent();
         if (Key.ArrowLeft && Setting.x > ROAD_PADDING_X) {
@@ -111,6 +125,7 @@ const startGame = () => {
     playMusic();
     start.classList.add('hidden');
     gameArea.classList.remove('hidden');
+    gameArea.innerHTML = '';
 
     for (let i = 0; i < getLinesAmount(LINE_LENGTH) + 1; i++) {
         const roadLine = document.createElement('div');
@@ -133,8 +148,13 @@ const startGame = () => {
         gameArea.appendChild(opponent);
     }
 
+    Setting.score = 0;
     Setting.start = true;
     gameArea.appendChild(player);
+
+    player.style.left = gameArea.offsetWidth / 2 - player.offsetWidth / 2;
+    player.style.top = 'auto';
+    player.style.bottom = '10px';
     Setting.x = player.offsetLeft;
     Setting.y = player.offsetTop;
 

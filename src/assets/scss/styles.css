@@ -46,4 +46,32 @@ body {
   bottom: 25px;
   left: 180px; }
 
+.start {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  margin: 0;
+  padding: 2rem 0;
+  text-align: center;
+  z-index: 10;
+  color: #fff;
+  font-size: 1.5rem;
+  background: black;
+  cursor: pointer;
+  font-weight: bold; }
+
+.score {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  padding: 1rem 0;
+  z-index: 10;
+  font-size: 1.5rem;
+  color: skyblue;
+  text-align: center;
+  font-weight: bold; }
+
 /*# sourceMappingURL=styles.css.map */
