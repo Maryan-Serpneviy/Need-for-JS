@@ -75,6 +75,7 @@
 		"no-useless-constructor": "error",
 		"no-var": "warn",
 		"object-curly-spacing": ["warn", "always"],
-		"quotes": ["warn", "single", { "avoidEscape": true , "allowTemplateLiterals": true }]
+		"quotes": ["warn", "single", { "avoidEscape": true , "allowTemplateLiterals": true }],
+		"semi": ["error", "always", { "omitLastInOneLineBlock": true}] 
 	}
 }

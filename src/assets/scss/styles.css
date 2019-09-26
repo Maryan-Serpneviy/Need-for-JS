@@ -1,24 +1,35 @@
 @font-face : "Caviar Dreams" {
   font-family: "Caviar Dreams";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams.ttf") format("truetype"); }
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams.ttf") format("truetype");
+}
+
 @font-face : "Caviar Dreams Bold" {
   font-family: "Caviar Dreams Bold";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Bold.ttf") format("truetype"); }
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Bold.ttf") format("truetype");
+}
+
 @font-face : "Caviar Dreams Bold" {
   font-family: "Caviar Dreams Bold";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Italic.ttf") format("truetype"); }
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Italic.ttf") format("truetype");
+}
+
 @font-face : "Caviar Dreams Bold Italic" {
   font-family: "Caviar Dreams Bold Italic";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype"); }
+  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype");
+}
+
 body {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   font-family: "Caviar Dreams", Helvetica, Arial, sans-serif;
-  background-color: azure; }
+  background-color: azure;
+}
 
 .hidden {
-  display: none; }
+  display: none;
+}
 
 .gameArea {
   width: 450px;
@@ -26,25 +37,29 @@ body {
   position: relative;
   margin: auto;
   background-color: #505050;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .road-line {
   position: absolute;
   width: 10px;
   height: 50px;
   background: #eee;
-  left: 220px; }
+  left: 220px;
+}
 
 .car {
   position: absolute;
   width: 75px;
-  height: 150px; }
+  height: 150px;
+}
 
 .player {
   width: 90px;
   height: 150px;
   bottom: 25px;
-  left: 180px; }
+  left: 180px;
+}
 
 .start {
   position: absolute;
@@ -59,7 +74,8 @@ body {
   font-size: 1.5rem;
   background: black;
   cursor: pointer;
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .score {
   position: absolute;
@@ -72,6 +88,6 @@ body {
   font-size: 1.5rem;
   color: skyblue;
   text-align: center;
-  font-weight: bold; }
-
+  font-weight: bold;
+}
 /*# sourceMappingURL=styles.css.map */
