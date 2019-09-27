@@ -7,3 +7,14 @@ $road-line-color: #eee;
 $nfs-font: 'NFS', Helvetica, Arial, sans-serif;
 $nfs-color: rgb(12, 188, 241);
 $grad: radial-gradient(rgb(39, 76, 180), rgb(4, 5, 83));
+
+// Intro
+$js-base: 0.65;
+$js-size: $road-width * $js-base;
+
+// Hud
+$hud-height: 45px; // hud height
+$hud-bg: black;
+$hud-color: rgb(0, 204, 78);
+$battery-width: 77px;
+$battery-height: $hud-height / 2 - 2;
