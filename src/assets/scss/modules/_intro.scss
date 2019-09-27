@@ -1,0 +1,71 @@
+
+
+.intro {
+    background: $grad;
+    color: rgb(12, 188, 241);
+    font-family: $nfs-font;
+    width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.intro__logo {
+    max-width: $road-width - 30;
+    padding: 30px 15px;
+}
+
+.intro__loading {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 2rem;
+}
+
+.logo__js {
+    background-color: rgb(247, 223, 30);
+    width: $js-size;
+    height: $road-width * 0.65;
+    text-transform: uppercase;
+    font-size: 12rem;
+    font-family: "Neutra Text Bold";
+    position: relative;
+    left: $road-width / 2 - $js-size / 2;
+}
+
+.logo__js-text {
+    position: absolute;
+    right: 15px;
+    bottom: 0px;
+    color: black;
+    animation: rotate 6.5s 1s infinite;
+}
+
+.intro__tap {
+    animation: blink 0.75s 0s infinite;
+}
+
+.intro__tap-text {
+    display: block;
+    text-align: center;
+    margin: 25px auto;
+    font-size: 2rem;
+    font-family: $nfs-font;
+}
+
+@keyframes rotate {
+    3% {
+        transform: rotateY(0deg);
+    }
+    70%,
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes blink {
+    33% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

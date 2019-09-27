@@ -1,0 +1,29 @@
+.game-area {
+    width: $road-width;
+    height: 100vh;
+    position: relative;
+    margin: auto;
+    background-color: $asphalt-color;
+    overflow: hidden;
+}
+
+.road-line {
+    position: absolute;
+    width: $road-line-width;
+    height: $road-line-length;
+    background: $road-line-color;
+    left: $road-width / 2 - ($road-line-width / 2);
+}
+
+.car {
+    position: absolute;
+    width: 75px;
+    height: 150px;
+}
+
+.player {   
+    width: 75px;
+    height: 150px;
+    bottom: 25px;
+    left: $road-width / 2 - 90 / 2;
+}

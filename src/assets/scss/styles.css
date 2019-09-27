@@ -1,77 +1,231 @@
-@font-face : "Caviar Dreams" {
-  font-family: "Caviar Dreams";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams.ttf") format("truetype"); }
-@font-face : "Caviar Dreams Bold" {
-  font-family: "Caviar Dreams Bold";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Bold.ttf") format("truetype"); }
-@font-face : "Caviar Dreams Bold" {
-  font-family: "Caviar Dreams Bold";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_Italic.ttf") format("truetype"); }
-@font-face : "Caviar Dreams Bold Italic" {
-  font-family: "Caviar Dreams Bold Italic";
-  src: url("/assets/fonts/Caviar-Dreams/CaviarDreams_BoldItalic.ttf") format("truetype"); }
-body {
-  padding: 0;
+.intro {
+  background: radial-gradient(#274cb4, #040553);
+  color: #0cbcf1;
+  font-family: "NFS", Helvetica, Arial, sans-serif;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.intro__logo {
+  max-width: 420px;
+  padding: 30px 15px;
+}
+
+.intro__loading {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 2rem;
+}
+
+.logo__js {
+  background-color: #f7df1e;
+  width: 292.5px;
+  height: 292.5px;
+  text-transform: uppercase;
+  font-size: 12rem;
+  font-family: "Neutra Text Bold";
+  position: relative;
+  left: 78.75px;
+}
+
+.logo__js-text {
+  position: absolute;
+  right: 15px;
+  bottom: 0px;
+  color: black;
+  -webkit-animation: rotate 6.5s 1s infinite;
+          animation: rotate 6.5s 1s infinite;
+}
+
+.intro__tap {
+  -webkit-animation: blink 0.75s 0s infinite;
+          animation: blink 0.75s 0s infinite;
+}
+
+.intro__tap-text {
+  display: block;
+  text-align: center;
+  margin: 25px auto;
+  font-size: 2rem;
+  font-family: "NFS", Helvetica, Arial, sans-serif;
+}
+
+@-webkit-keyframes rotate {
+  3% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  70%,
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+
+@keyframes rotate {
+  3% {
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
+  }
+  70%,
+  100% {
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+
+@-webkit-keyframes blink {
+  33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.start {
+  width: 100%;
+  height: 100vh;
   margin: 0;
-  box-sizing: border-box;
-  font-family: "Caviar Dreams", Helvetica, Arial, sans-serif;
-  background-color: azure; }
+  padding: 2rem 0;
+  text-align: center;
+  color: #9ce4fa;
+  font-size: 1.5rem;
+  background: #05004b;
+  background: radial-gradient(#274cb4, #040553);
+  letter-spacing: 0.2rem;
+}
 
-.hidden {
-  display: none; }
+.start .start__difficulty--choose {
+  margin-bottom: 30px;
+}
 
-.gameArea {
+.start .start__difficulty {
+  margin: 20px auto;
+  padding: 25px;
+  border: 2px solid #0cbcf1;
+  width: 315px;
+  font-size: 2.5rem;
+  letter-spacing: 0.25rem;
+  cursor: pointer;
+}
+
+.start .start__difficulty:hover {
+  background: radial-gradient(#274cb4, #040553);
+  color: #e5f8fe;
+}
+
+.game-area {
   width: 450px;
   height: 100vh;
   position: relative;
   margin: auto;
   background-color: #505050;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .road-line {
   position: absolute;
   width: 10px;
   height: 50px;
   background: #eee;
-  left: 220px; }
+  left: 220px;
+}
 
 .car {
   position: absolute;
   width: 75px;
-  height: 150px; }
+  height: 150px;
+}
 
 .player {
-  width: 90px;
+  width: 75px;
   height: 150px;
   bottom: 25px;
-  left: 180px; }
+  left: 180px;
+}
 
-.start {
+.game-area__hud {
+  width: 450px;
+  min-height: 45px;
+  line-height: 45px;
+  font-family: "Caviar Dreams", Helvetica, Arial, sans-serif;
+  background: black;
+  color: #00cc4e;
+  font-size: 25.71429px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
+  z-index: 20;
+  text-align: center;
+}
+
+.hud-elem {
+  margin: auto;
+}
+
+.hud__life {
+  width: 77px;
+  height: 20.5px;
+  border: 3px solid #00cc4e;
+}
+
+.hud__life::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.battery__segment {
+  width: 21.38889px;
+  height: 15.5px;
+  background: #00cc4e;
+  float: left;
+  border: 2px solid black;
+}
+
+.battery__tip {
+  position: relative;
+  left: 77px;
+  top: 5.25px;
+  width: 5px;
+  height: 5px;
+  background: #00cc4e;
+  border: 2px solid #00cc4e;
+}
+
+body {
+  padding: 0;
   margin: 0;
-  padding: 2rem 0;
-  text-align: center;
-  z-index: 10;
-  color: #fff;
-  font-size: 1.5rem;
-  background: black;
-  cursor: pointer;
-  font-weight: bold; }
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "NFS", Helvetica, Arial, sans-serif;
+  color: #0cbcf1;
+  background-color: azure;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
 
-.score {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: black;
-  padding: 1rem 0;
-  z-index: 10;
-  font-size: 1.5rem;
-  color: skyblue;
-  text-align: center;
-  font-weight: bold; }
+.hidden {
+  display: none;
+}
 
+.wrapper {
+  width: 450px;
+  margin: auto;
+}
 /*# sourceMappingURL=styles.css.map */

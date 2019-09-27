@@ -1,13 +1,20 @@
 /* eslint-disable no-unused-vars */
-const score = document.querySelector('.score');
+const intro = document.querySelector('.intro');
 const start = document.querySelector('.start');
-const gameArea = document.querySelector('.gameArea');
+const gameArea = document.querySelector('.game-area');
 const player = document.createElement('div');
+player.classList.add('car');
+player.classList.add('player');
 
-const PLAYER_CARS = 4;
-const FAST_CARS = 4;
-const SLOW_CARS = 5;
-const TRACKS = 5;
+const hud = document.querySelector('.game-area__hud');
+const life = hud.querySelector('.hud__life');
+const score = hud.querySelector('.hud__score');
+const timer = hud.querySelector('.hud__timer');
+hud.style.visibility = 'hidden';
+
+const PLAYER_CARS = 5;
+const TRAFFIC_CARS = 8;
+const MUSIC_TRACKS = 5;
 
 const CAR_HEIGHT = 100;
 const LINE_LENGTH = 100;
@@ -15,15 +22,20 @@ const LINE_GAP = 100;
 const ROAD_OVERFLOW = 75;
 const ROAD_PADDING_X = 5;
 const ROAD_PADDING_Y = 50;
+const COLLISION_X = 5;
+const COLLISION_Y = 15;
 
-const CONTROLS_SENSITIVITY = 2.25;
 const OPPONENT_SPEED = 2;
 
 const Key = {
     ArrowUp: false,
     ArrowDown: false,
     ArrowRight: false,
-    ArrowLeft: false
+    ArrowLeft: false,
+    w: false,
+    s: false,
+    d: false,
+    a: false
 };
 
 const Setting = {
@@ -31,27 +43,54 @@ const Setting = {
     score: 0,
     speed: 15,
     traffic: 4,
-    trafficInterval: 100
+    trafficInterval: 100,
+    handling: 2.25
 };
+
+
+const music = new Audio('');
+const track = Math.ceil(Math.random() * MUSIC_TRACKS);
+music.src = `./assets/music/${track}.mp3`;
+music.addEventListener('loadeddata', () => { /**/ });
+
+window.addEventListener('DOMContentLoaded', () => {
+    const jsLogo = document.querySelector('.logo__js');
+    const introTap = document.querySelector('.intro__tap');
+    const introLoading = document.querySelector('.intro__loading');
+
+    const points = () => {
+        let pointsCount = 0;
+        return () => {
+            if (pointsCount < 3) {
+                const point = document.createElement('span');
+                point.classList.add('loading-point');
+                point.textContent = '.';
+                introLoading.appendChild(point);
+                pointsCount++;
+            } else {
+                introLoading.classList.add('hidden');
+                jsLogo.classList.remove('hidden');
+                setTimeout(() => {
+                    introTap.classList.remove('hidden');
+                    intro.addEventListener('click', setDifficulty);
+                    intro.addEventListener('keydown', setDifficulty);
+                }, 1000);
+                return;
+            }
+        };
+    };
+    setInterval(points(), 750);
+    clearInterval(points);
+});
 
 const getLinesAmount = lineHeight => Math.ceil(gameArea.offsetHeight / lineHeight) + 1;
 
-(() => {
-    player.classList.add('car');
-    player.classList.add('player');
-    const playerCar = Math.floor(Math.random() * PLAYER_CARS) + 1;
-    player.style.background = `transparent url('./assets/img/player/${playerCar}.png') center no-repeat`;
-})();
-
-const playMusic = () => {
-    const music = document.createElement('audio');
-    const track = Math.floor(Math.random() * TRACKS) + 1;
-    music.classList.add('music');
-    music.setAttribute('type', 'audio/mp3');
-    music.setAttribute('autoplay', true);
-    music.setAttribute('src', `./assets/music/${track}.mp3`);
-    document.body.appendChild(music);
+const shuffleTrafficCars = (amount, element, folder) => {
+    const car = Math.ceil(Math.random() * amount);
+    element.style.background = `transparent url('./assets/img/${folder}/${car}.png') center no-repeat`;
 };
+
+shuffleTrafficCars(PLAYER_CARS, player, 'player');
 
 const moveRoad = () => {
     const roadLines = document.querySelectorAll('.road-line');
@@ -70,61 +109,59 @@ const moveOpponent = () => {
         const playerRect = player.getBoundingClientRect();
         const opponentRect = opponent.getBoundingClientRect();
 
-        if (playerRect.top <= opponentRect.bottom &&
-            playerRect.right >= opponentRect.left &&
-            playerRect.left <= opponentRect.right &&
-            playerRect.bottom >= opponentRect.top) {
+        if (playerRect.top + COLLISION_Y <= opponentRect.bottom &&
+            playerRect.right - COLLISION_X >= opponentRect.left &&
+            playerRect.left + COLLISION_X <= opponentRect.right &&
+            playerRect.bottom - COLLISION_Y >= opponentRect.top) {
                 Setting.start = false;
+                music.pause();
                 start.classList.remove('hidden');
                 start.style.top = score.offsetHeight;
+                hud.style.visibility = 'hidden';
         }
 
         opponent.y += Setting.speed / OPPONENT_SPEED;
         opponent.style.top = `${opponent.y}px`;
+
         if (opponent.y >= gameArea.offsetHeight) {
+            shuffleTrafficCars(TRAFFIC_CARS, opponent, 'traffic');
             opponent.y = -CAR_HEIGHT * OPPONENT_SPEED * Setting.traffic;
             opponent.style.left = `${Math.floor(Math.random() * (gameArea.offsetWidth - ROAD_OVERFLOW))}px`;
         }
     });
 };
 
-const randomOpponent = () => {
-    return Math.floor(Math.random() * FAST_CARS) + 1;
-};
-
 const playGame = () => {
+    Setting.score += Setting.speed;
+    score.textContent = Setting.score;
+    moveRoad();
+    moveOpponent();
+    if (Key.ArrowLeft && Setting.x > ROAD_PADDING_X || Key.a && Setting.x > ROAD_PADDING_X) {
+        Setting.x -= Setting.speed / Setting.handling;
+    }
+    if (Key.ArrowRight && Setting.x < gameArea.offsetWidth - player.offsetWidth - ROAD_PADDING_X ||
+        Key.d && Setting.x < gameArea.offsetWidth - player.offsetWidth - ROAD_PADDING_X) {
+        Setting.x += Setting.speed / Setting.handling;
+    }
+    if (Key.ArrowUp && Setting.y > ROAD_PADDING_Y || Key.w && Setting.y > ROAD_PADDING_Y) {
+        Setting.y -= Setting.speed / Setting.handling;
+    }
+    if (Key.ArrowDown && Setting.y < gameArea.offsetHeight - player.offsetHeight - ROAD_PADDING_Y ||
+        Key.s && Setting.y < gameArea.offsetHeight - player.offsetHeight - ROAD_PADDING_Y) {
+        Setting.y += Setting.speed / Setting.handling;
+    }
+    player.style.left = `${Setting.x}px`;
+    player.style.top = `${Setting.y}px`;
     if (Setting.start) {
-        Setting.score += Setting.speed;
-        score.innerHTML = 'Score<br>' + Setting.score;
-        moveRoad();
-        moveOpponent();
-        if (Key.ArrowLeft && Setting.x > ROAD_PADDING_X) {
-            Setting.x -= Setting.speed / CONTROLS_SENSITIVITY;
-        }
-
-        if (Key.ArrowRight && Setting.x < gameArea.offsetWidth - player.offsetWidth - ROAD_PADDING_X) {
-            Setting.x += Setting.speed / CONTROLS_SENSITIVITY;
-        }
-
-        if (Key.ArrowUp && Setting.y > ROAD_PADDING_Y) {
-            Setting.y -= Setting.speed / CONTROLS_SENSITIVITY;
-        }
-
-        if (Key.ArrowDown && Setting.y < gameArea.offsetHeight - player.offsetHeight - ROAD_PADDING_Y) {
-            Setting.y += Setting.speed / CONTROLS_SENSITIVITY;
-        }
-
-        player.style.left = `${Setting.x}px`;
-        player.style.top = `${Setting.y}px`
-
         requestAnimationFrame(playGame);
     }
 };
 
 const startGame = () => {
-    playMusic();
+    music.play();
     start.classList.add('hidden');
     gameArea.classList.remove('hidden');
+    hud.style.visibility = 'visible';
     gameArea.innerHTML = '';
 
     for (let i = 0; i < getLinesAmount(LINE_LENGTH) + 1; i++) {
@@ -134,7 +171,6 @@ const startGame = () => {
         roadLine.y = i * LINE_GAP;
         gameArea.appendChild(roadLine);
     }
-
     for (let i = 0; i < getLinesAmount(Setting.trafficInterval * Setting.traffic); i++) {
         const opponent = document.createElement('div');
         opponent.style.display = 'block';
@@ -143,18 +179,16 @@ const startGame = () => {
         opponent.y = -CAR_HEIGHT * Setting.traffic * (i + 1);
         opponent.style.left = `${Math.floor(Math.random() * (gameArea.offsetWidth - ROAD_OVERFLOW))}px`;
         opponent.style.top = `${opponent.y}px`;
-        const opponentCar = Math.floor(Math.random() * FAST_CARS) + 1;
-        opponent.style.background = `transparent url('./assets/img/traffic/fast/${opponentCar}.png') center no-repeat`;
+        shuffleTrafficCars(TRAFFIC_CARS, opponent, 'traffic');
         gameArea.appendChild(opponent);
     }
-
     Setting.score = 0;
     Setting.start = true;
     gameArea.appendChild(player);
 
     player.style.left = gameArea.offsetWidth / 2 - player.offsetWidth / 2;
     player.style.top = 'auto';
-    player.style.bottom = '10px';
+    player.style.bottom = '25px';
     Setting.x = player.offsetLeft;
     Setting.y = player.offsetTop;
 
@@ -175,6 +209,36 @@ const stopRun = evt => {
     }
 };
 
-start.addEventListener('click', startGame);
+const setDifficulty = evt => {
+    intro.classList.add('hidden');
+    start.classList.remove('hidden');
+    intro.removeEventListener('click', setDifficulty);
+    intro.removeEventListener('keydown', setDifficulty);
+
+    if (evt.target.classList.contains('junior')) {
+        Setting.speed = 10;
+        Setting.traffic = 6;
+        Setting.trafficInterval = 100;
+        player.style.background = `transparent url('./assets/img/player/1.png') center no-repeat`;
+        startGame();
+        start.classList.add('hidden');
+    } else if (evt.target.classList.contains('middle')) {
+        Setting.speed = 20;
+        Setting.traffic = 3.5;
+        Setting.trafficInterval = 100;
+        player.style.background = `transparent url('./assets/img/player/2.png') center no-repeat`;
+        startGame();
+        start.classList.add('hidden');
+    } else if (evt.target.classList.contains('senior')) {
+        Setting.speed = 30;
+        Setting.traffic = 3.3; //3.45;
+        Setting.trafficInterval = 110;
+        Setting.handling = 2.5;
+        startGame();
+        start.classList.add('hidden');
+    }
+};
+
+start.addEventListener('click', setDifficulty);
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);

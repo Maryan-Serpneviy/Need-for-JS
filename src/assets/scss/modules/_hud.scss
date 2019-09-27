@@ -1,0 +1,48 @@
+.game-area__hud {
+    width: $road-width;
+    min-height: $hud-height;
+    line-height: $hud-height;
+    font-family: $main-font;
+    background: $hud-bg;
+    color: rgb(0, 204, 78);
+    font-size: $hud-height / 1.75;
+    display: flex;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    text-align: center;
+}
+
+.hud-elem {
+    margin: auto;
+}
+
+.hud__life {
+    width: $battery-width;
+    height: $battery-height;
+    border: 3px solid $hud-color;
+}
+
+.hud__life::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.battery__segment {
+    width: $battery-width / 3.6;
+    height: $battery-height - 5;
+    background: $hud-color;
+    float: left;
+    border: 2px solid $hud-bg;
+}
+
+.battery__tip {
+    position: relative;
+    left: $battery-width;
+    top: $battery-height / 2 - 5;
+    width: 5px;
+    height: 5px;
+    background: $hud-color;
+    border: 2px solid $hud-color;
+}
