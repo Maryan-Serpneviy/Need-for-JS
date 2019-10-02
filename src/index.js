@@ -116,6 +116,7 @@ const moveOpponent = () => {
                 Setting.start = false;
                 music.pause();
                 start.classList.remove('hidden');
+                gameArea.classList.add('hidden');
                 start.style.top = score.offsetHeight;
                 hud.style.visibility = 'hidden';
         }
@@ -225,13 +226,13 @@ const setDifficulty = evt => {
     } else if (evt.target.classList.contains('middle')) {
         Setting.speed = 20;
         Setting.traffic = 3.5;
-        Setting.trafficInterval = 100;
+        Setting.trafficInterval = 90;
         player.style.background = `transparent url('./assets/img/player/2.png') center no-repeat`;
         startGame();
         start.classList.add('hidden');
     } else if (evt.target.classList.contains('senior')) {
         Setting.speed = 30;
-        Setting.traffic = 3.3; //3.45;
+        Setting.traffic = 3.75;
         Setting.trafficInterval = 110;
         Setting.handling = 2.5;
         startGame();
