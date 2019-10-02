@@ -8,7 +8,7 @@
 }
 
 .intro__logo {
-  max-width: 420px;
+  max-width: 330px;
   padding: 30px 15px;
 }
 
@@ -20,13 +20,13 @@
 
 .logo__js {
   background-color: #f7df1e;
-  width: 292.5px;
-  height: 292.5px;
+  width: 234px;
+  height: 234px;
   text-transform: uppercase;
-  font-size: 12rem;
+  font-size: 9rem;
   font-family: "Neutra Text Bold";
   position: relative;
-  left: 78.75px;
+  left: 63px;
 }
 
 .logo__js-text {
@@ -95,7 +95,7 @@
 
 .start {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 2rem 0;
   text-align: center;
@@ -114,7 +114,7 @@
   margin: 20px auto;
   padding: 25px;
   border: 2px solid #0cbcf1;
-  width: 315px;
+  width: 252px;
   font-size: 2.5rem;
   letter-spacing: 0.25rem;
   cursor: pointer;
@@ -126,7 +126,7 @@
 }
 
 .game-area {
-  width: 450px;
+  width: 360px;
   height: 100vh;
   position: relative;
   margin: auto;
@@ -139,7 +139,7 @@
   width: 10px;
   height: 50px;
   background: #eee;
-  left: 220px;
+  left: 175px;
 }
 
 .car {
@@ -152,11 +152,11 @@
   width: 75px;
   height: 150px;
   bottom: 25px;
-  left: 180px;
+  left: 135px;
 }
 
 .game-area__hud {
-  width: 450px;
+  width: 360px;
   min-height: 45px;
   line-height: 45px;
   font-family: "Caviar Dreams", Helvetica, Arial, sans-serif;
@@ -225,7 +225,7 @@ body {
 }
 
 .wrapper {
-  width: 450px;
+  width: 360px;
   margin: auto;
 }
 /*# sourceMappingURL=styles.css.map */
